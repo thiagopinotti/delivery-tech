@@ -26,6 +26,16 @@ public class Cliente {
     @Builder.Default
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
+    public void setTelefone(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setTelefone'");
+    }
+
+    public void setEndereco(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setEndereco'");
+    }
+
 /*     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Pedido> pedidos; */
 }
