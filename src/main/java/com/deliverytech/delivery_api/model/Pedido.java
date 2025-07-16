@@ -24,7 +24,12 @@ public class Pedido {
     @JoinColumn(name = "restaurante_id")
     private Restaurante restaurante;
 
-    private BigDecimal total;
+    // Mudança 16/07
+    private BigDecimal valorTotal;
+    private String numeroPedido;
+    private BigDecimal subtotal;
+    private String observacoes;
+
 
     @Enumerated(EnumType.STRING)
     private StatusPedido status;

@@ -17,13 +17,13 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     List<Pedido> findByDataPedidoBetween(LocalDateTime inicio, LocalDateTime fim);
     
     //=== CONSULTAS CUSTOMIZADAS ===
-    @Query("SELECT p.restaurante.nome, SUM(p.total) " +
+    @Query("SELECT p.restaurante.nome, SUM(p.valorTotal) " +
            "FROM Pedido p " +
            "GROUP BY p.restaurante.nome " +
-           "ORDER BY SUM(p.total) DESC")
+           "ORDER BY SUM(p.valorTotal) DESC")
     List<Object[]> calcularTotalVendasPorRestaurante();
     
-    @Query("SELECT p FROM Pedido p WHERE p.total > :valor ORDER BY p.total DESC")
+    @Query("SELECT p FROM Pedido p WHERE p.valorTotal > :valor ORDER BY p.valorTotal DESC")
     List<Pedido> buscarPedidosComValorAcimaDe(@Param("valor") BigDecimal valor);
     
     @Query("SELECT p FROM Pedido p " +
@@ -34,4 +34,11 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
             @Param("inicio") LocalDateTime inicio,
             @Param("fim") LocalDateTime fim,
             @Param("status") StatusPedido status);
+
+    @Query("SELECT p.restaurante.nome as nomeRestaurante, " +
+           "SUM(p.valorTotal) as totalVendas, " +
+           "COUNT(p.id) as quantidadePedidos " +
+           "FROM Pedido p " +
+           "GROUP BY p.restaurante.nome")
+    List<RelatorioVendas> obterRelatorioVendasPorRestaurante();
 }

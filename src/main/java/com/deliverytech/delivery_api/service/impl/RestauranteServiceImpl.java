@@ -6,6 +6,7 @@ import com.deliverytech.delivery_api.service.RestauranteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,5 +47,29 @@ public class RestauranteServiceImpl implements RestauranteService {
                 r.setTempoEntregaMinutos(atualizado.getTempoEntregaMinutos());
                 return restauranteRepository.save(r);
             }).orElseThrow(() -> new RuntimeException("Restaurante não encontrado"));
+    }
+
+    @Override
+    public List<Restaurante> listarAtivos() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'listarAtivos'");
+    }
+
+    @Override
+    public List<Restaurante> buscarPorAvaliacao(BigDecimal minAvaliacao) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarPorAvaliacao'");
+    }
+
+    @Override
+    public List<Restaurante> buscarPorTaxaEntrega(BigDecimal maxTaxa) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarPorTaxaEntrega'");
+    }
+
+    @Override
+    public void inativar(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'inativar'");
     }
 }

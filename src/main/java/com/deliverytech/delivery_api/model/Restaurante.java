@@ -22,6 +22,10 @@ public class Restaurante {
 
     private String telefone;
 
+    //mudança 16/07
+    private String endereco; // Remover exceção do setter
+    private BigDecimal avaliacao;
+
     private BigDecimal taxaEntrega;
 
     private Integer tempoEntregaMinutos;
@@ -30,6 +34,10 @@ public class Restaurante {
 
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL)
     private List<Produto> produtos;
+
+    // Mudança 16/07
+    @OneToMany(mappedBy = "restaurante")
+    private List<Pedido> pedidos;
 
     public void setEndereco(String string) {
         // TODO Auto-generated method stub
