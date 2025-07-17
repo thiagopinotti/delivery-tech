@@ -22,8 +22,7 @@ public class Restaurante {
 
     private String telefone;
 
-    //mudança 16/07
-    private String endereco; // Remover exceção do setter
+    //mudança 16/07/ Remover exceção do setter
     private BigDecimal avaliacao;
 
     private BigDecimal taxaEntrega;
@@ -39,8 +38,4 @@ public class Restaurante {
     @OneToMany(mappedBy = "restaurante")
     private List<Pedido> pedidos;
 
-    public void setEndereco(String string) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setEndereco'");
-    }
 }

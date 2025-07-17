@@ -1,7 +1,7 @@
 package com.deliverytech.delivery_api.service.impl;
 
 import com.deliverytech.delivery_api.model.Cliente;
-import com.deliverytech.delivery_api.dto.request.ClienteRequest; // ✅ ADICIONAR IMPORT
+import com.deliverytech.delivery_api.dto.request.ClienteRequest; // ADICIONAR IMPORT
 import com.deliverytech.delivery_api.repository.ClienteRepository;
 import com.deliverytech.delivery_api.service.ClienteService;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +32,7 @@ public class ClienteServiceImpl implements ClienteService {
             cliente.setNome(clienteRequest.getNome());
             cliente.setEmail(clienteRequest.getEmail());
             cliente.setTelefone(clienteRequest.getTelefone());
+            cliente.setEndereco(clienteRequest.getEndereco()); // <-----
             
             // Validar email único
             if (clienteRepository.existsByEmail(cliente.getEmail())) {
@@ -51,9 +52,8 @@ public class ClienteServiceImpl implements ClienteService {
         }
     
         /**
-         * Implementação do método cadastrar(Cliente) exigido pela interface
+         * Método auxiliar para cadastrar cliente a partir de uma entidade Cliente.
          */
-        @Override
         public Cliente cadastrar(Cliente cliente) {
             log.info("Iniciando cadastro de cliente: {}", cliente.getEmail());
     

@@ -23,15 +23,8 @@ public class RestauranteController {
 
     @PostMapping
     public ResponseEntity<RestauranteResponse> cadastrar(@Valid @RequestBody RestauranteRequest request) {
-        Restaurante restaurante = Restaurante.builder()
-                .nome(request.getNome())
-                .telefone(request.getTelefone())
-                .categoria(request.getCategoria())
-                .taxaEntrega(request.getTaxaEntrega())
-                .tempoEntregaMinutos(request.getTempoEntregaMinutos())
-                .ativo(true)
-                .build();
-        Restaurante salvo = restauranteService.cadastrar(restaurante);
+        Restaurante salvo = restauranteService.cadastrar(request);
+
         return ResponseEntity.ok(new RestauranteResponse(
                 salvo.getId(), salvo.getNome(), salvo.getCategoria(), salvo.getTelefone(),
                 salvo.getTaxaEntrega(), salvo.getTempoEntregaMinutos(), salvo.getAtivo()));
@@ -61,15 +54,11 @@ public class RestauranteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<RestauranteResponse> atualizar(@PathVariable Long id, @Valid @RequestBody RestauranteRequest request) {
-        Restaurante atualizado = Restaurante.builder()
-                .nome(request.getNome())
-                .telefone(request.getTelefone())
-                .categoria(request.getCategoria())
-                .taxaEntrega(request.getTaxaEntrega())
-                .tempoEntregaMinutos(request.getTempoEntregaMinutos())
-                .build();
-        Restaurante salvo = restauranteService.atualizar(id, atualizado);
-        return ResponseEntity.ok(new RestauranteResponse(salvo.getId(), salvo.getNome(), salvo.getCategoria(), salvo.getTelefone(), salvo.getTaxaEntrega(), salvo.getTempoEntregaMinutos(), salvo.getAtivo()));
+        Restaurante salvo = restauranteService.atualizar(id, request);
+        
+        return ResponseEntity.ok(new RestauranteResponse(
+                salvo.getId(), salvo.getNome(), salvo.getCategoria(), salvo.getTelefone(), 
+                salvo.getTaxaEntrega(), salvo.getTempoEntregaMinutos(), salvo.getAtivo()));
     }
 
     @DeleteMapping("/{id}")

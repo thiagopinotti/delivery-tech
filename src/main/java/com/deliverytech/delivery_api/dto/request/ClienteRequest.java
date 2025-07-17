@@ -18,4 +18,7 @@ public class ClienteRequest {
     @Email
     @NotBlank
     private String email;
+
+    @NotBlank
+    private String endereco;
 }

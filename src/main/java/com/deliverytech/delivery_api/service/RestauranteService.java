@@ -1,6 +1,7 @@
 // Mudança 16/07
 package com.deliverytech.delivery_api.service;
 
+import com.deliverytech.delivery_api.dto.request.RestauranteRequest;
 import com.deliverytech.delivery_api.model.Restaurante;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ public interface RestauranteService {
     /**
      * Cadastrar novo restaurante
      */
-    Restaurante cadastrar(Restaurante restaurante);
+    Restaurante cadastrar(RestauranteRequest restauranteRequest);
     
     /**
      * Buscar restaurante por ID
@@ -47,7 +48,7 @@ public interface RestauranteService {
     /**
      * Atualizar dados do restaurante
      */
-    Restaurante atualizar(Long id, Restaurante restauranteAtualizado);
+    Restaurante atualizar(Long id, RestauranteRequest restauranteRequest);
     
     /**
      * Inativar restaurante (soft delete)
