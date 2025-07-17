@@ -1,6 +1,7 @@
 package com.deliverytech.delivery_api.controller;
 
 import com.deliverytech.delivery_api.model.Cliente;
+import com.deliverytech.delivery_api.dto.request.ClienteRequest; // ✅ ADICIONAR IMPORT
 import com.deliverytech.delivery_api.service.ClienteService; // ✅ INTERFACE
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,10 +27,10 @@ public class ClienteController {
      * POST /clientes
      */
     @PostMapping
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Cliente cliente) {
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody ClienteRequest clienteRequest) {
         try {
-            log.info("Recebida requisição para cadastrar cliente: {}", cliente.getEmail());
-            Cliente clienteSalvo = clienteService.cadastrar(cliente);
+            log.info("Recebida requisição para cadastrar cliente: {}", clienteRequest.getEmail());
+            Cliente clienteSalvo = clienteService.cadastrar(clienteRequest);
             return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
         } catch (IllegalArgumentException e) {
             log.warn("Erro de validação ao cadastrar cliente: {}", e.getMessage());

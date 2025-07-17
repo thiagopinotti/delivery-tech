@@ -11,6 +11,9 @@ public class ClienteRequest {
 
     @NotBlank
     private String nome;
+    
+    @NotBlank
+    private String telefone;
 
     @Email
     @NotBlank
