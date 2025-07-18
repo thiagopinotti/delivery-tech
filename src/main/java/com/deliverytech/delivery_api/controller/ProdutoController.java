@@ -67,4 +67,23 @@ public class ProdutoController {
         produtoService.alterarDisponibilidade(id, disponivel);
         return ResponseEntity.noContent().build();
     }
+
+    // ADICIONAR: Listar todos os produtos
+    @GetMapping
+    public List<ProdutoResponse> listarTodos() {
+        return produtoService.listarTodos().stream()
+                .map(p -> new ProdutoResponse(p.getId(), p.getNome(), p.getCategoria(),
+                     p.getDescricao(), p.getPreco(), p.getDisponivel()))
+                .collect(Collectors.toList());
+    }
+
+    // ADICIONAR: Buscar produto por ID
+    @GetMapping("/{id}")
+    public ResponseEntity<ProdutoResponse> buscarPorId(@PathVariable Long id) {
+        return produtoService.buscarPorId(id)
+                .map(p -> new ProdutoResponse(p.getId(), p.getNome(), p.getCategoria(),
+                     p.getDescricao(), p.getPreco(), p.getDisponivel()))
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
