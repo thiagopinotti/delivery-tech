@@ -13,6 +13,7 @@ public interface ProdutoService {
     List<Produto> listarTodos();                              
     Produto atualizar(Long id, Produto produtoAtualizado);    
     void inativar(Long id);                                   
+    void deletar(Long id);
     
     // === BUSCAS ESPECÍFICAS ===
     List<Produto> buscarPorRestaurante(Long restauranteId);   
