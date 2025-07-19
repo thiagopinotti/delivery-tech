@@ -5,17 +5,30 @@ import com.deliverytech.delivery_api.model.StatusPedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
+@Repository
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+
+    // ✅ ADICIONAR: Métodos básicos
     List<Pedido> findByClienteId(Long clienteId);
     List<Pedido> findByRestauranteId(Long restauranteId);
     List<Pedido> findByStatus(StatusPedido status);
     List<Pedido> findByDataPedidoBetween(LocalDateTime inicio, LocalDateTime fim);
-    
+
+    // ✅ ADICIONAR: Query com JOIN FETCH para carregar itens
+    @Query("SELECT p FROM Pedido p LEFT JOIN FETCH p.itens i LEFT JOIN FETCH i.produto WHERE p.id = :id")
+    Optional<Pedido> findByIdWithItens(@Param("id") Long id);
+
+    // ✅ ADICIONAR: Query com JOIN FETCH para carregar itens por cliente
+    @Query("SELECT p FROM Pedido p LEFT JOIN FETCH p.itens i LEFT JOIN FETCH i.produto WHERE p.cliente.id = :clienteId")
+    List<Pedido> findByClienteIdWithItens(@Param("clienteId") Long clienteId);
+
     //=== CONSULTAS CUSTOMIZADAS ===
     @Query("SELECT p.restaurante.nome, SUM(p.valorTotal) " +
            "FROM Pedido p " +
