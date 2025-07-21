@@ -1,0 +1,24 @@
+=== ENTREGA - TESTE DE ENDPOINT ===
+Data/Hora: 21/07/2025 19:09:09
+Método: GET
+URL Completa: http://localhost:8080/api/produtos
+Status HTTP: 200
+Content-Type: application/json
+
+
+=== RESPOSTA REAL ===
+[ {
+  "id" : 1,
+  "nome" : "X-Tudo Delícia",
+  "categoria" : "Hamburger",
+  "descricao" : "Molho de tomate, duplo cheader, duplo bacon e Ceboa Crispy",
+  "preco" : 30.9,
+  "disponivel" : true
+}, {
+  "id" : 2,
+  "nome" : "X-Tudo Delícia",
+  "categoria" : "Hamburger",
+  "descricao" : "Molho de tomate, duplo cheader, duplo bacon e Ceboa Crispy",
+  "preco" : 30.9,
+  "disponivel" : true
+} ]

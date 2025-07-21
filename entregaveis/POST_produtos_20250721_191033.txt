@@ -1,0 +1,25 @@
+=== ENTREGA - TESTE DE ENDPOINT ===
+Data/Hora: 21/07/2025 19:10:33
+Método: POST
+URL Completa: http://localhost:8080/api/produtos
+Status HTTP: 200
+Content-Type: application/json
+
+=== DADOS ENVIADOS ===
+{
+  "nome" : "Dog Especial",
+  "descricao" : "Molho de tomate, mussarela e calabresa",
+  "preco" : 38.0,
+  "categoria" : "Hot Dog",
+  "restauranteId" : 1
+}
+
+=== RESPOSTA REAL ===
+{
+  "id" : 3,
+  "nome" : "Dog Especial",
+  "categoria" : "Hot Dog",
+  "descricao" : "Molho de tomate, mussarela e calabresa",
+  "preco" : 38.0,
+  "disponivel" : true
+}
