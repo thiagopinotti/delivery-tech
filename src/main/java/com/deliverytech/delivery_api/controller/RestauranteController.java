@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -65,5 +67,47 @@ public class RestauranteController {
     public ResponseEntity<Void> inativar(@PathVariable Long id) {
         restauranteService.inativar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    /**
+     * Buscar restaurantes disponíveis (ativos)
+     * GET /api/restaurantes/disponiveis
+     */
+    @GetMapping("/disponiveis")
+    public List<RestauranteResponse> buscarDisponiveis() {
+        return restauranteService.listarAtivos().stream()
+                .map(r -> new RestauranteResponse(
+                    r.getId(), r.getNome(), r.getCategoria(), r.getTelefone(), 
+                    r.getTaxaEntrega(), r.getTempoEntregaMinutos(), r.getAtivo()))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Calcular taxa de entrega para um CEP
+     * POST /api/restaurantes/{id}/taxa-entrega
+     */
+    @PostMapping("/{id}/taxa-entrega")
+    public ResponseEntity<?> calcularTaxaEntrega(@PathVariable Long id, 
+                                               @RequestBody Map<String, String> request) {
+        try {
+            String cep = request.get("cep");
+            if (cep == null || cep.trim().isEmpty()) {
+                return ResponseEntity.badRequest()
+                    .body(Map.of("erro", "CEP é obrigatório"));
+            }
+            
+            BigDecimal taxa = restauranteService.calcularTaxaEntrega(id, cep);
+            
+            return ResponseEntity.ok(Map.of(
+                "restauranteId", id,
+                "cep", cep,
+                "taxaEntrega", taxa,
+                "moeda", "BRL"
+            ));
+            
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest()
+                .body(Map.of("erro", e.getMessage()));
+        }
     }
 }
