@@ -4,6 +4,8 @@ package com.deliverytech.delivery_api.service;
 import com.deliverytech.delivery_api.dto.request.ClienteRequest;
 import com.deliverytech.delivery_api.model.Cliente;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,7 @@ public interface ClienteService {
     List<Cliente> buscarPorNome(String nome);
     
 
-    Cliente atualizar(Long id, Cliente clienteAtualizado);
+    Cliente atualizar(Long id, ClienteRequest clienteRequest);
     
 
     void inativar(Long id);
@@ -39,6 +41,5 @@ public interface ClienteService {
      * @return cliente com status alterado
      */
     Cliente ativarDesativarCliente(Long id);
-    
-    Cliente cadastrar(Cliente cliente);
+
 }

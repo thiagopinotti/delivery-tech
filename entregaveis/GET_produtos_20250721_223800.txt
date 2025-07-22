@@ -1,7 +1,7 @@
 === ENTREGA - TESTE DE ENDPOINT ===
-Data/Hora: 21/07/2025 19:02:13
+Data/Hora: 21/07/2025 22:38:00
 Método: GET
-URL Completa: http://localhost:8080/api/pedidos
+URL Completa: http://localhost:8080/api/produtos
 Status HTTP: 200
 Content-Type: application/json
 
