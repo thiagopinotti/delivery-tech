@@ -1,5 +1,5 @@
 === ENTREGA - TESTE DE ENDPOINT ===
-Data/Hora: 21/07/2025 19:10:28
+Data/Hora: 21/07/2025 19:19:15
 Método: GET
 URL Completa: http://localhost:8080/api/produtos
 Status HTTP: 200
@@ -20,5 +20,12 @@ Content-Type: application/json
   "categoria" : "Hamburger",
   "descricao" : "Molho de tomate, duplo cheader, duplo bacon e Ceboa Crispy",
   "preco" : 30.9,
+  "disponivel" : true
+}, {
+  "id" : 3,
+  "nome" : "Dog Especial",
+  "categoria" : "Hot Dog",
+  "descricao" : "Molho de tomate, mussarela e calabresa",
+  "preco" : 38.0,
   "disponivel" : true
 } ]

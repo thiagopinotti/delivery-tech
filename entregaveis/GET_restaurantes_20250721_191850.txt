@@ -1,5 +1,5 @@
 === ENTREGA - TESTE DE ENDPOINT ===
-Data/Hora: 21/07/2025 19:10:44
+Data/Hora: 21/07/2025 19:18:50
 Método: GET
 URL Completa: http://localhost:8080/api/restaurantes
 Status HTTP: 200
