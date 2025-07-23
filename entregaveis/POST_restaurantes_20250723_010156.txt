@@ -1,0 +1,28 @@
+=== ENTREGA - TESTE DE ENDPOINT ===
+Data/Hora: 23/07/2025 01:01:56
+Método: POST
+URL Completa: http://localhost:8080/api/restaurantes
+Status HTTP: 400
+Content-Type: application/json
+
+=== DADOS ENVIADOS ===
+{
+  "nome" : "string",
+  "categoria" : "string",
+  "endereco" : "string",
+  "taxaEntrega" : 0,
+  "tempoEntregaMinutos" : 1,
+  "telefone" : "string",
+  "email" : "string",
+  "avaliacao" : 5
+}
+
+=== RESPOSTA REAL ===
+{
+  "validationErrors" : {
+    "taxaEntrega" : "Taxa de entrega deve ser positiva"
+  },
+  "error" : "Dados inválidos",
+  "timestamp" : "2025-07-23T01:01:56.4958549",
+  "status" : 400
+}
