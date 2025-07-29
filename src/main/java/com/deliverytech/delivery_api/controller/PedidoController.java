@@ -256,6 +256,7 @@ public class PedidoController {
      * Atualizar status do pedido
      * PATCH /api/pedidos/{id}/status
      */
+    @Transactional
     @PatchMapping("/{id}/status")
     public ResponseEntity<PedidoResponse> atualizarStatus(@PathVariable Long id,
                                                      @Valid @RequestBody StatusUpdateRequest request) {
